@@ -1,11 +1,12 @@
 {
-  "name": "Cashboard",
-  "description": "Single-page metrics",
+  "name": "application-name",
   "version": "0.0.1",
-  "private": false,
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
-    "express": "3.x",
-    "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git",
-    "node-sass": "~0.7.0"
+    "express": "3.4.4",
+    "hjs": "0.0.6"
   }
 }
