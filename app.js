@@ -43,4 +43,8 @@ app.get( '/', routes.index );
 
 // var config = require('config.js');
 
-app.get( '/data/googleanalytics', data.data);
+app.get( '/data/:provider', function(req, res) {
+    if (req.params.provider === 'googleanalytics') {
+        return data.ga(req, res);
+    }
+});

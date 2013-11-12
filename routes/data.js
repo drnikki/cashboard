@@ -1,6 +1,6 @@
 
 
-exports.data = function(req, res){
+exports.ga = function(req, res){
 
     var GA = require('googleanalytics');
     var util = require('util');
