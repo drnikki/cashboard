@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <meta charset="utf-8">
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+</head>
+
+<body>
+
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
-  </body>
+
+<script src="/js/lib/jquery-2.0.3.min.js"></script>
+<script src="/js/lib/hogan-2.0.0.min.js"></script>
+<script src="/js/cashboard.js"></script>
+
+</body>
 </html>
