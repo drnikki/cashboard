@@ -44,7 +44,24 @@ app.get( '/', routes.index );
 // var config = require('config.js');
 
 app.get( '/data/:provider', function(req, res) {
-    if (req.params.provider === 'googleanalytics') {
-        return data.ga(req, res);
+
+    var provider = req.params.provider;
+
+    // if we have a handler for that url
+    if ( data.hasOwnProperty(provider) ) {
+
+        data[provider](req,res);
+
+    // otherwise json error
+    } else {
+
+        res.json({
+            "errors" : [
+                {
+                    "message" : "Incorrect URL?"
+                }
+            ]
+        });
     }
+
 });

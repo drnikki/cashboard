@@ -1,5 +1,10 @@
 
 
+// ------------------------------------------------------------------------- //
+// Google
+// ------------------------------------------------------------------------- //
+
+
 exports.ga = function(req, res){
 
     var GA = require('googleanalytics');
@@ -22,9 +27,21 @@ exports.ga = function(req, res){
         };
 
         ga.get(options, function(err, entries) {
-            // its an array and I don't want that
+            // return JSON
+            // also its an array and I don't want that, so [0]
             res.json(entries[0]);
         });
     });
+
+};
+
+// ------------------------------------------------------------------------- //
+// Instagram
+// ------------------------------------------------------------------------- //
+
+
+exports.instagram = function(req, res){
+
+    res.json('instagram');
 
 };
