@@ -92,9 +92,25 @@ dataRoutes.instagram = function(req, res){
 // Twitter
 // ------------------------------------------------------------------------- //
 
-dataRoutes.twitter = function(req, res){
+var Twitter = require('twitter');
+var twit = new Twitter({
+    consumer_key: config.twitter.consumer_key,
+    consumer_secret: config.twitter.consumer_secret,
+    access_token_key: config.twitter.access_token,
+    access_token_secret: config.twitter.access_token_secret
+});
 
-    res.json('twitter');
+dataRoutes.twitter = function(req, res) {
+
+    twit
+        .verifyCredentials(function(data) {
+            res.json(data);
+            /*
+            twit.get('/followers/ids.json?user_id=' + config.twitter.user_id, {include_entities:true}, function(data) {
+                res.json(data);
+            });
+            */
+        });
 
 };
 
@@ -102,7 +118,7 @@ dataRoutes.twitter = function(req, res){
 // Mailchimp
 // ------------------------------------------------------------------------- //
 
-dataRoutes.mailchimp = function(req, res){
+dataRoutes.mailchimp = function(req, res) {
 
     res.json('mailchimp');
 
