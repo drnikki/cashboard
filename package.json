@@ -10,7 +10,8 @@
     "hjs": "0.0.6",
     "node-sass": "~0.7.0",
     "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git",
-    "jasmine-node" : "1.11.0",
-    "request" : "2.27.0"
+    "jasmine-node": "1.11.0",
+    "request": "2.27.0",
+    "instagram-node-lib": "~0.1.1"
   }
 }

@@ -1,14 +1,44 @@
+// get all configs
+var config = require('../config');
+
+// holds all the routes
+var dataRoutes = {};
+
+// ------------------------------------------------------------------------- //
+// Handle incoming routes
+// ------------------------------------------------------------------------- //
+
+dataRoutes.dataRouter = function(req, res) {
+
+    var provider = req.params.provider;
+
+    // if we have a handler for that url
+    if ( dataRoutes.hasOwnProperty(provider) ) {
+
+        dataRoutes[provider](req,res);
+
+    // otherwise json error
+    } else {
+
+        res.json({
+            "errors" : [
+                {
+                    "message" : "Incorrect URL?"
+                }
+            ]
+        });
+    }
+
+};
 
 
 // ------------------------------------------------------------------------- //
 // Google
 // ------------------------------------------------------------------------- //
 
-
-exports.ga = function(req, res){
+dataRoutes.ga = function(req, res){
 
     var GA = require('googleanalytics');
-    var util = require('util');
     var GAconfig = {
         "user" : 'test@yellowsmith.com',
         "password": "testtest"
@@ -39,9 +69,46 @@ exports.ga = function(req, res){
 // Instagram
 // ------------------------------------------------------------------------- //
 
+var Instagram = require('instagram-node-lib');
 
-exports.instagram = function(req, res){
+Instagram.set('client_id', config.instagram.client_id);
+Instagram.set('client_secret', config.instagram.client_secret);
 
-    res.json('instagram');
+dataRoutes.instagram = function(req, res){
+
+    //https://api.instagram.com/v1/users/238670333?client_id=1e9035d6965a4353a1727f963902f2bf
+    Instagram.users.info({
+        user_id: config.instagram.user_id,
+        complete : function(data) {
+            res.json(data);
+        }
+    });
+
+
 
 };
+
+// ------------------------------------------------------------------------- //
+// Twitter
+// ------------------------------------------------------------------------- //
+
+dataRoutes.twitter = function(req, res){
+
+    res.json('twitter');
+
+};
+
+// ------------------------------------------------------------------------- //
+// Mailchimp
+// ------------------------------------------------------------------------- //
+
+dataRoutes.mailchimp = function(req, res){
+
+    res.json('mailchimp');
+
+};
+
+// ------------------------------------------------------------------------- //
+// Export
+// ------------------------------------------------------------------------- //
+module.exports = dataRoutes;

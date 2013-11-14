@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
     function makeGoogle() {
 
         var getGaData = $.ajax({
-            url: 'data/googleanalytics'
+            url: 'data/ga'
         });
 
         var getGaTemplate = $.ajax({

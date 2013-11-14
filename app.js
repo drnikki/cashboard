@@ -6,8 +6,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var routes = require('./routes');
-var data = require('./routes/data');
+var routes = require('./routes/');
+var dataRoutes = require('./routes/data');
 
 var app = express();
 
@@ -39,29 +39,4 @@ http.createServer(app).listen(app.get('port'), function(){
 // ------------------------------------------------------------------------- //
 
 app.get( '/', routes.index );
-
-
-// var config = require('config.js');
-
-app.get( '/data/:provider', function(req, res) {
-
-    var provider = req.params.provider;
-
-    // if we have a handler for that url
-    if ( data.hasOwnProperty(provider) ) {
-
-        data[provider](req,res);
-
-    // otherwise json error
-    } else {
-
-        res.json({
-            "errors" : [
-                {
-                    "message" : "Incorrect URL?"
-                }
-            ]
-        });
-    }
-
-});
+app.get( '/data/:provider', dataRoutes.dataRouter );
