@@ -1,0 +1,16 @@
+{
+  "generator-bbb": {
+    "name": "bbb-tester",
+    "testFramework": "jasmine",
+    "moduleStyle": "amd",
+    "indent": {
+      "style": "space",
+      "size": 4
+    },
+    "paths": {
+      "base": ".",
+      "tests": "test",
+      "modules": "app/modules"
+    }
+  }
+}
