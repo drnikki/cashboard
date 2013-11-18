@@ -3,6 +3,7 @@ define(function(require, exports, module) {
 
     // External dependencies.
     var Backbone = require("backbone");
+    var template = require('text!viewsPath/book.html');
 
     // Defining the application router.
     module.exports = Backbone.Router.extend({
