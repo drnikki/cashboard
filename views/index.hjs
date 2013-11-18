@@ -17,9 +17,7 @@
 <body>
     <!-- Application container. -->
     <main role="main" id="main">
-        hello
         <div id="fooData">
-            {{foo}}
         </div>
     </main>
 

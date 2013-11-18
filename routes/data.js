@@ -1,5 +1,7 @@
 // get all configs
 var config = require('../config');
+// get the mongo db
+var db = require("../database.js");
 
 // holds all the routes
 var dataRoutes = {};
@@ -119,6 +121,19 @@ dataRoutes.twitter = function(req, res) {
 dataRoutes.mailchimp = function(req, res) {
 
     res.json('mailchimp');
+
+};
+
+// ------------------------------------------------------------------------- //
+// Foos TESTING
+// ------------------------------------------------------------------------- //
+
+dataRoutes.foos = function(req, res) {
+
+    db.testcol.find(function(err, data) {
+        if(err) return;
+        res.json(data);
+    });
 
 };
 

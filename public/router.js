@@ -1,5 +1,4 @@
-define(function(require, exports, module) {
-    "use strict";
+define(function(require) {
 
     // External dependencies.
     var Backbone = require("backbone");
@@ -11,23 +10,29 @@ define(function(require, exports, module) {
     var FooCollectionView = require('modules/views/fooCollection');
 
     // Defining the application router.
-    module.exports = Backbone.Router.extend({
+    var Router = Backbone.Router.extend({
         routes: {
             "": "index",
             "other": "other"
         },
 
         index: function() {
-            console.log("Welcome to your / route.");
 
-            var data = $("#fooData").html();
-            var fooCollection = new FooCollection(JSON.parse(data));
+            $.ajax({
+                url: '/data/foos',
+                data : 'JSON'
+            })
+            .done(function(data) {
 
-            var view = new FooCollectionView({ collection: fooCollection });
+                var fooCollection = new FooCollection( data );
 
-            var viewEl = view.render().el;
+                var view = new FooCollectionView({ collection: fooCollection });
 
-            $('body').append(viewEl);
+                var viewEl = view.render().el;
+
+                $('body').append(viewEl);
+
+            });
 
         },
 
@@ -35,4 +40,7 @@ define(function(require, exports, module) {
             alert('other!');
         }
     });
+
+    return Router;
+
 });

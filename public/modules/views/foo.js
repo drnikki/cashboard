@@ -1,9 +1,8 @@
-define(function(require, exports, module) {
+define(function(require) {
 
     var Backbone = require('backbone');
     var $ = require('jquery');
     var Events = require('events');
-
     var Handlebars = require('handlebars');
 
     var template = require('text!viewsPath/foo.html');
@@ -28,8 +27,6 @@ define(function(require, exports, module) {
             Events.trigger("router:navigate", url);
         }
     });
-
-    // exports.module = BookView
 
     return BookView;
 
