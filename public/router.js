@@ -3,7 +3,12 @@ define(function(require, exports, module) {
 
     // External dependencies.
     var Backbone = require("backbone");
-    var template = require('text!viewsPath/book.html');
+    var $ = require('jquery');
+
+    var FooModel = require('modules/models/foo');
+    var FooView = require('modules/views/foo');
+    var FooCollection = require('modules/collections/foo');
+    var FooCollectionView = require('modules/views/fooCollection');
 
     // Defining the application router.
     module.exports = Backbone.Router.extend({
@@ -14,6 +19,16 @@ define(function(require, exports, module) {
 
         index: function() {
             console.log("Welcome to your / route.");
+
+            var data = $("#fooData").html();
+            var fooCollection = new FooCollection(JSON.parse(data));
+
+            var view = new FooCollectionView({ collection: fooCollection });
+
+            var viewEl = view.render().el;
+
+            $('body').append(viewEl);
+
         },
 
         other : function() {
