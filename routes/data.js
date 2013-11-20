@@ -1,3 +1,15 @@
+// ************************************************************************* //
+// ========================================================================= //
+//
+// JSON Data routes
+//
+// All JSON endpoints handled here
+//
+// ========================================================================= //
+// ************************************************************************* //
+
+
+
 // get all configs
 var config = require('../config');
 // get the mongo db
@@ -23,6 +35,8 @@ dataRoutes.dataRouter = function(req, res) {
     } else {
 
         res.json({
+            // status for not found?
+            "statusCode" : 404,
             "errors" : [
                 {
                     "message" : "Incorrect URL?"
@@ -59,9 +73,14 @@ dataRoutes.ga = function(req, res){
         };
 
         ga.get(options, function(err, entries) {
+
             // return JSON
             // also its an array and I don't want that, so [0]
-            res.json(entries[0]);
+            res.json({
+                // status for not found?
+                "statusCode" : 200,
+                "data" : entries[0]
+            });
         });
     });
 
@@ -82,7 +101,11 @@ dataRoutes.instagram = function(req, res){
     Instagram.users.info({
         user_id: config.instagram.user_id,
         complete : function(data) {
-            res.json(data);
+            res.json({
+                // status for not found?
+                "statusCode" : 200,
+                "data" : data
+            });
         }
     });
 
@@ -104,7 +127,11 @@ dataRoutes.twitter = function(req, res) {
 
     twit
         .verifyCredentials(function(data) {
-            res.json(data);
+            res.json({
+                // status for not found?
+                "statusCode" : 200,
+                "data" : data
+            });
             /*
             twit.get('/followers/ids.json?user_id=' + config.twitter.user_id, {include_entities:true}, function(data) {
                 res.json(data);
