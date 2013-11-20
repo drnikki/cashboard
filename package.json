@@ -28,6 +28,13 @@
   "name": "bbb-tester",
   "version": "0.1.0",
   "dependencies": {
-    "mongojs": "~0.9.6"
+    "mongojs": "~0.9.6",
+    "express": "3.4.4",
+    "jasmine-node": "1.11.0",
+    "request": "2.27.0",
+    "hjs": "0.0.6",
+    "twitter": "~0.2.5",
+    "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git",
+    "instagram-node-lib": "~0.1.1",
   }
 }
