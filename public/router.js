@@ -19,6 +19,12 @@ define(function(require) {
     var GaModel = require('modules/models/ga');
     var GaView = require('modules/views/ga');
 
+    var TwitterModel = require('modules/models/twitter');
+    var TwitterView = require('modules/views/twitter');
+
+    var InstagramModel = require('modules/models/instagram');
+    var InstagramView = require('modules/views/instagram');
+
     // Defining the application router.
     var Router = Backbone.Router.extend({
         routes: {
@@ -30,58 +36,23 @@ define(function(require) {
 
             // @TODO embed starting JSON in the template in a script tag?
 
-            // big mess of get everything!
-
-            /*
-            $.ajax({
-                url: '/data/foos'
-            })
-            .done(function(data) {
-
-                // populate the collection with the JSON
-                fooCollection = new FooCollection( data );
-                // make a new view with the collection
-                var view = new FooCollectionView({ collection: fooCollection });
-                view.render();
-
-                // add the collection element to the body
-                $('body').append(view.el);
-
-            });
-            */
-
             // google analytics
 
             // autofetches. Good idea?
             var ga = new GaModel();
-            var gaView = new GaView({model : ga});
+            var gaView = new GaView({ model : ga });
 
-
-            /*
-            $.ajax({
-                url: '/data/ga'
-            })
-            .done(function(data) {
-
-                console.log(data);
-
-                // populate the collection with the JSON
-                // var fooCollection = new FooCollection( data );
-                // make a new view with the collection
-                // var view = new FooCollectionView({ collection: fooCollection });
-                // var viewEl = view.render().el;
-
-                // add the collection element to the body
-                // $('body').append(viewEl);
-
-            });
-            */
 
             // twitter
+            var twitter = new TwitterModel();
+            var twitterView = new TwitterView({ model : twitter });
 
             // mail chimp
 
 
+            // instagram
+            var instagram = new InstagramModel();
+            var instagramView = new InstagramView({ model : instagram });
 
         },
 

@@ -16,9 +16,6 @@ define(function(require) {
     var GaTemplate = require('text!viewsPath/ga.html');
 
     var GaView = Backbone.View.extend({
-        events: {
-
-        },
         template : GaTemplate,
         className : 'ga-container',
         initialize: function(options) {

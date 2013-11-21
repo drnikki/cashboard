@@ -19,6 +19,9 @@
     <main role="main" id="main">
 
         <section id="ga"></section>
+        <section id="twitter"></section>
+        <section id="mailchimp"></section>
+        <section id="instagram"></section>
 
     </main>
 
