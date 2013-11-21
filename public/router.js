@@ -32,7 +32,7 @@ define(function(require) {
 
             // big mess of get everything!
 
-            // test
+            /*
             $.ajax({
                 url: '/data/foos'
             })
@@ -48,14 +48,14 @@ define(function(require) {
                 $('body').append(view.el);
 
             });
+            */
 
             // google analytics
 
             // autofetches. Good idea?
             ga = new GaModel();
             gaView = new GaView({model : ga});
-
-            //$('body').append( gaView.render().el );
+            // $('body').append( gaView.render().el );
 
 
             /*

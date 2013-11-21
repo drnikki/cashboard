@@ -18,6 +18,8 @@
 
     <main role="main" id="main">
 
+        <section id="ga"></section>
+
     </main>
 
     <!-- build:[src] /source.min.js -->

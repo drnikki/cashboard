@@ -13,8 +13,7 @@ define(function(require) {
     var Events = require('events');
     var Handlebars = require('handlebars');
 
-    // var template = require('text!viewsPath/foo.html');
-    var template = '<p>{{data}}</p>';
+    var template = require('text!viewsPath/ga.html');
 
     var GaView = Backbone.View.extend({
         events: {
@@ -25,12 +24,14 @@ define(function(require) {
         initialize: function(options) {
             // Re-render when the model changes
             // this.model.on('change', this.render, this);
-            this.listenTo(this.model, "change sync", this.render);
+            this.listenTo(this.model, "sync", this.render);
         },
         render: function() {
             var compiled = Handlebars.compile(template);
+            console.log( this.model.attributes );
             var html = compiled(this.model.attributes);
             this.$el.html(html);
+            $('#ga').empty().html( this.el );
             console.log('rendering');
             return this;
         }
