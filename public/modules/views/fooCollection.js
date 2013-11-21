@@ -5,7 +5,7 @@ define(function(require) {
 
     var FooCollectionView = Backbone.View.extend({
         initialize: function() {
-            this.listenTo(this.collection, "reset", this.render);
+            this.listenTo(this.collection, "reset sync", this.render);
         },
         tagName: "ul",
         className: "books",

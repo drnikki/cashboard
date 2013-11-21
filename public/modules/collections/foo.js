@@ -5,7 +5,7 @@ define(function(require) {
 
     var FooCollection = Backbone.Collection.extend({
         model: FooModel,
-        url: "/"
+        url: "/data/foos"
     });
 
     return FooCollection;
