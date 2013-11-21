@@ -13,8 +13,8 @@ define(function(require) {
     var Backbone = require("backbone");
     var $ = require('jquery');
 
-    var FooCollection = require('modules/collections/foo');
-    var FooCollectionView = require('modules/views/fooCollection');
+    // var FooCollection = require('modules/collections/foo');
+    // var FooCollectionView = require('modules/views/fooCollection');
 
     var GaModel = require('modules/models/ga');
     var GaView = require('modules/views/ga');
@@ -53,9 +53,8 @@ define(function(require) {
             // google analytics
 
             // autofetches. Good idea?
-            ga = new GaModel();
-            gaView = new GaView({model : ga});
-            // $('body').append( gaView.render().el );
+            var ga = new GaModel();
+            var gaView = new GaView({model : ga});
 
 
             /*
