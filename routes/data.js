@@ -143,9 +143,14 @@ dataRoutes.twitter = function(req, res) {
 // Mailchimp
 // ------------------------------------------------------------------------- //
 
+mcapi = require('mailchimp-api');
+mc = new mcapi.Mailchimp( config.mailchimp.key );
+
 dataRoutes.mailchimp = function(req, res) {
 
-    res.json('mailchimp');
+    mc.lists.list({}, function(data) {
+        res.json(data);
+    });
 
 };
 
