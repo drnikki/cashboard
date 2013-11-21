@@ -95,12 +95,10 @@ Instagram.set('client_secret', config.instagram.client_secret);
 
 dataRoutes.instagram = function(req, res){
 
-    //https://api.instagram.com/v1/users/238670333?client_id=1e9035d6965a4353a1727f963902f2bf
     Instagram.users.info({
         user_id: config.instagram.user_id,
         complete : function(data) {
             res.json({
-                // status for not found?
                 "statusCode" : 200,
                 "data" : data
             });
@@ -126,7 +124,6 @@ dataRoutes.twitter = function(req, res) {
     twit
         .verifyCredentials(function(data) {
             res.json({
-                // status for not found?
                 "statusCode" : 200,
                 "data" : data
             });
@@ -149,7 +146,10 @@ mc = new mcapi.Mailchimp( config.mailchimp.key );
 dataRoutes.mailchimp = function(req, res) {
 
     mc.lists.list({}, function(data) {
-        res.json(data);
+        res.json({
+            "statusCode" : 200,
+            "data" : data
+        });
     });
 
 };
