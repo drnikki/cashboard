@@ -1,3 +1,11 @@
+{{!--
+     Google Analytics Template
+--}}
+
+{{!-- arrays must be .[0] if accessing the whole array, .0.attr if accessing an attr --}}
+
 <p>
-    New visits: {{data.metrics.[0].ga:percentNewVisits}}
+    % New visits: {{data.metrics.0.ga:percentNewVisits}}
+    <br>
+    New visitors: {{data.metrics.0.ga:visitors}}
 </p>
