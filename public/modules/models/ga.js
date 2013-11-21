@@ -15,7 +15,13 @@ define(function(require) {
         initialize : function() {
             // autofetch?
             this.fetch();
+        },
+        /*
+        // if you want to do custom JSON parsing
+        parse : function( response, options) {
+            return response;
         }
+        */
     });
 
     return GaModel;
