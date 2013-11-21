@@ -20,6 +20,9 @@ config.twitter.access_token_secret = "blahblahblah";
 // Google analaytics
 // ------------------------------------------------------------------------- //
 
+config.google_analytics.user = 'you@example.com';
+config.google_analytics.password = 'examplepassword';
+
 config.google_analytics.json_path = 'client_secret_9999999.project.googleusercontent.com.json';
 // this is the data in the file
 config.google_analytics.web = {};

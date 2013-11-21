@@ -50,23 +50,30 @@ dataRoutes.dataRouter = function(req, res) {
 // Google
 // ------------------------------------------------------------------------- //
 
+var GA = require('googleanalytics');
+
 dataRoutes.ga = function(req, res){
 
-    var GA = require('googleanalytics');
-    var GAconfig = {
-        "user" : 'test@yellowsmith.com',
-        "password": "testtest"
-    };
-    var ga = new GA.GA(GAconfig);
+    var ga = new GA.GA({
+        'user' : config.google_analytics.user,
+        'password' : config.google_analytics.password
+    });
 
     ga.login(function(err, token) {
+
+        var metrics = [
+            'ga:visitors',
+            'ga:percentNewVisits'
+        ];
+        var dimensions = [
+        ];
 
         var options = {
             'ids': 'ga:77232304',
             'start-date': '2013-10-11',
             'end-date': '2013-11-30',
-            //'dimensions': 'ga:visitCount',
-            'metrics': 'ga:visitors, ga:percentNewVisits',
+            //'dimensions': dimensions.join(','),
+            'metrics': metrics.join(','),
             //'sort': '-ga:visitCount'
         };
 
