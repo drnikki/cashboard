@@ -25,40 +25,38 @@ define(function(require) {
     var InstagramModel = require('modules/models/instagram');
     var InstagramView = require('modules/views/instagram');
 
+    var MailchimpModel = require('modules/models/mailchimp');
+    var MailchimpView = require('modules/views/mailchimp');
+
     // Defining the application router.
     var Router = Backbone.Router.extend({
         routes: {
-            "": "index",
-            "other": "other"
+            "": "index"
         },
 
         index: function() {
 
             // @TODO embed starting JSON in the template in a script tag?
+            // currently autofetches. Good idea?
 
             // google analytics
-
-            // autofetches. Good idea?
             var ga = new GaModel();
             var gaView = new GaView({ model : ga });
-
 
             // twitter
             var twitter = new TwitterModel();
             var twitterView = new TwitterView({ model : twitter });
 
             // mail chimp
-
+            var mailchimp = new MailchimpModel();
+            var mailchimpView = new MailchimpView({ model : mailchimp });
 
             // instagram
             var instagram = new InstagramModel();
             var instagramView = new InstagramView({ model : instagram });
 
-        },
-
-        other : function() {
-            alert('other!');
         }
+
     });
 
     return Router;
