@@ -4,7 +4,7 @@ define(function(require) {
 
     describe("JSON endpoints: ", function() {
 
-        it("Google shouldn't 404", function(done) {
+        it("Google shouldn't 404", function() {
 
             /*
             $.ajax({
@@ -24,31 +24,37 @@ define(function(require) {
             });
 
             */
-            /*
 
-            var callback = jasmine.createSpy();
 
-            makeAjaxCall(callback);
+            var callbacks = {
+                success : function(error) {
+                    console.log('callback success');
+                },
+                error : function(error) {
+                    console.log('callback error');
+                    jasmine.log("I've got a big log.");
+                }
+            }
 
-            waitsFor(function() {
-                return callback.callCount > 0;
-            }, "The Ajax call timed out.", 5000);
+            spyOn(callbacks, 'error');
 
-            runs(function() {
-                expect(callback).toHaveBeenCalled();
-            });
-
-            function makeAjaxCall(callback) {
+            function makeAjaxCall() {
                 $.ajax({
-                    type: "GET",
-                    url: "data.json",
-                    contentType: "application/json; charset=utf-8"
-                    dataType: "json",
-                    success: callback
+                    url: "http://localhost:3000/data/ga",
+                    success: callbacks.success,
+                    error : callbacks.error
                 });
             }
-            */
 
+            makeAjaxCall();
+
+            waitsFor(function() {
+                return callbacks.error.callCount > 0;
+            }, "The Ajax call timed out.", 10000);
+
+            runs(function() {
+                expect(callbacks.error).toHaveBeenCalled();
+            });
 
         });
 

@@ -135,7 +135,7 @@ module.exports = function(grunt) {
                 autoWatch: true,
 
                 reporters: ["progress", "coverage"],
-                browsers: ["PhantomJS"],
+                browsers: ["PhantomJS", "Chrome"],
 
                 // Change this to the framework you want to use.
                 frameworks: ["jasmine"],
@@ -143,6 +143,7 @@ module.exports = function(grunt) {
                 plugins: [
                     "karma-jasmine",
                     "karma-phantomjs-launcher",
+                    "karma-chrome-launcher",
                     "karma-coverage"
                 ],
 

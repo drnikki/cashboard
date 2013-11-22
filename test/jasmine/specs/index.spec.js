@@ -4,7 +4,6 @@ define(function(require) {
 
         it("should respond with hello world", function() {
             expect(true).toBe(true);
-            // done();
         });
 
     })

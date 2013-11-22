@@ -1,5 +1,4 @@
 (function(window) {
-    "use strict";
 
     var karma = window.__karma__;
 
@@ -21,7 +20,6 @@
         "config",
         "underscore"
     ],
-
     function(config, _) {
         var specs = _.chain(karma.files)
         // Convert the files object to an array of file paths.
