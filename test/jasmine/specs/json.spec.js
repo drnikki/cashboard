@@ -32,11 +32,10 @@ define(function(require) {
                 },
                 error : function(error) {
                     console.log('callback error');
-                    jasmine.log("I've got a big log.");
                 }
             }
 
-            spyOn(callbacks, 'error');
+            spyOn(callbacks, 'success');
 
             function makeAjaxCall() {
                 $.ajax({
@@ -49,11 +48,11 @@ define(function(require) {
             makeAjaxCall();
 
             waitsFor(function() {
-                return callbacks.error.callCount > 0;
+                return callbacks.success.callCount > 0;
             }, "The Ajax call timed out.", 10000);
 
             runs(function() {
-                expect(callbacks.error).toHaveBeenCalled();
+                expect(callbacks.success).toHaveBeenCalled();
             });
 
         });

@@ -135,7 +135,10 @@ module.exports = function(grunt) {
                 autoWatch: true,
 
                 reporters: ["progress", "coverage"],
-                browsers: ["PhantomJS", "Chrome"],
+                browsers: [
+                    "PhantomJS",
+                    // "Chrome"
+                ],
 
                 // Change this to the framework you want to use.
                 frameworks: ["jasmine"],
