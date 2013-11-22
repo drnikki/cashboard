@@ -30,12 +30,13 @@
   "dependencies": {
     "mongojs": "~0.9.6",
     "express": "3.4.4",
-    "jasmine-node": "1.11.0",
-    "request": "2.27.0",
     "hjs": "0.0.6",
     "twitter": "~0.2.5",
     "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git",
     "instagram-node-lib": "~0.1.1",
-    "mailchimp-api": "~2.0.4"
+    "mailchimp-api": "~2.0.4",
+    // these 2 might be dev or not needed anymore
+    "jasmine-node": "1.11.0",
+    "request": "2.27.0"
   }
 }

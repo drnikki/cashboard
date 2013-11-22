@@ -13,11 +13,11 @@ module.exports = function(grunt) {
         requirejs: {
             release: {
                 options: {
-                    mainConfigFile: "app/config.js",
+                    mainConfigFile: "public/config.js",
                     generateSourceMaps: true,
                     include: ["main"],
                     insertRequire: ["main"],
-                    out: "dist/source.min.js",
+                    out: "public/dist/source.min.js",
                     optimize: "uglify2",
 
                     // Since we bootstrap with nested `require` calls this option allows
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                     // Setting the base url to the distribution directory allows the
                     // Uglify minification process to correctly map paths for Source
                     // Maps.
-                    baseUrl: "dist/app",
+                    baseUrl: "public/dist",
 
                     // Wrap everything in an IIFE.
                     wrap: true,
@@ -51,14 +51,14 @@ module.exports = function(grunt) {
             // development file path.
             "dist/styles.css": {
                 // Point this to where your `index.css` file is location.
-                src: "app/styles/index.css",
+                src: "public/styles/css/index.css",
 
                 // The relative path to use for the @imports.
-                paths: ["app/styles"],
+                paths: ["public/styles"],
 
                 // Rewrite image paths during release to be relative to the `img`
                 // directory.
-                forceRelative: "/app/img/"
+                forceRelative: "/public/img/"
             }
         },
 
@@ -93,6 +93,7 @@ module.exports = function(grunt) {
             }
         },
 
+        /*
         processhtml: {
             release: {
                 files: {
@@ -100,20 +101,17 @@ module.exports = function(grunt) {
                 }
             }
         },
+        */
 
         // Move vendor and app logic during a build.
         copy: {
             release: {
                 files: [
                     {
-                        src: ["app/**"],
-                        dest: "dist/"
-                    },
-                    {
-                        src: "vendor/**",
+                        src: ["public/**"],
                         dest: "dist/"
                     }
-        ]
+                ]
             }
         },
 
@@ -143,15 +141,14 @@ module.exports = function(grunt) {
                 frameworks: ["jasmine"],
 
                 plugins: [
-          "karma-jasmine",
-          "karma-mocha",
-          "karma-qunit",
-          "karma-phantomjs-launcher",
-          "karma-coverage"
-        ],
+                    "karma-jasmine",
+                    "karma-phantomjs-launcher",
+                    "karma-coverage"
+                ],
 
+                // this should not process libraries or vendor scripts
                 preprocessors: {
-                    "app/**/*.js": "coverage"
+                    "public/**/*.js": "coverage"
                 },
 
                 coverageReporter: {
@@ -160,25 +157,24 @@ module.exports = function(grunt) {
                 },
 
                 files: [
-          // You can optionally remove this or swap out for a different expect.
-          "vendor/bower/chai/chai.js",
-          "vendor/bower/requirejs/require.js",
-          "test/runner.js",
-
+                    // You can optionally remove this or swap out for a different expect.
+                    "vendor/bower/chai/chai.js",
+                    "vendor/bower/requirejs/require.js",
+                    "test/runner.js",
                     {
-                        pattern: "app/**/*.*",
-                        included: false
+                          pattern: "app/**/*.*",
+                          included: false
                     },
-          // Derives test framework from Karma configuration.
+                    // Derives test framework from Karma configuration.
                     {
                         pattern: "test/<%= karma.options.frameworks[0] %>/**/*.spec.js",
                         included: false
-          },
+                    },
                     {
                         pattern: "vendor/**/*.js",
                         included: false
                     }
-        ]
+                ]
             },
 
             // This creates a server that will automatically run your tests when you
@@ -226,12 +222,12 @@ module.exports = function(grunt) {
 
     // When running the default Grunt command, just lint the code.
     grunt.registerTask("default", [
-    "clean",
-    "jshint",
-    "processhtml",
-    "copy",
-    "requirejs",
-    "styles",
-    "cssmin",
-  ]);
+        "clean",
+        "jshint",
+        "processhtml",
+        "copy",
+        "requirejs",
+        "styles",
+        "cssmin"
+    ]);
 };
