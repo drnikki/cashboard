@@ -6,6 +6,6 @@ define(function(require) {
             expect(true).toBe(true);
         });
 
-    })
+    });
 
 })

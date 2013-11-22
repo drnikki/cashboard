@@ -31,7 +31,7 @@ define(function(require) {
                     console.log('callback success');
                 },
                 error : function(error) {
-                    console.log('callback error');
+                    console.log('callback error', error);
                 }
             }
 
