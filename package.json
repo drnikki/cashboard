@@ -14,7 +14,8 @@
     "karma-mocha": "~0.1.0",
     "karma-qunit": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
-    "karma-coverage": "~0.1.0"
+    "karma-coverage": "~0.1.0",
+    "grunt-bbb-requirejs": "backbone-boilerplate/grunt-bbb-requirejs#32e36a5acc817050b9b0bcf8e3e8f8d260f05b27"
   },
   "peerDependencies": {
     "generator-bbb": "*",
@@ -35,7 +36,6 @@
     "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git",
     "instagram-node-lib": "~0.1.1",
     "mailchimp-api": "~2.0.4",
-    // these 2 might be dev or not needed anymore
     "jasmine-node": "1.11.0",
     "request": "2.27.0"
   }

@@ -147,9 +147,11 @@ module.exports = function(grunt) {
                 ],
 
                 // this should not process libraries or vendor scripts
+
                 preprocessors: {
-                    "public/**/*.js": "coverage"
+                    // "public/**.js": "coverage"
                 },
+
 
                 coverageReporter: {
                     type: "lcov",
@@ -158,11 +160,10 @@ module.exports = function(grunt) {
 
                 files: [
                     // You can optionally remove this or swap out for a different expect.
-                    "vendor/bower/chai/chai.js",
-                    "vendor/bower/requirejs/require.js",
+                    "public/vendor/bower/requirejs/require.js",
                     "test/runner.js",
                     {
-                          pattern: "app/**/*.*",
+                          pattern: "public/**/*.*",
                           included: false
                     },
                     // Derives test framework from Karma configuration.
@@ -171,7 +172,7 @@ module.exports = function(grunt) {
                         included: false
                     },
                     {
-                        pattern: "vendor/**/*.js",
+                        pattern: "public/vendor/**/*.js",
                         included: false
                     }
                 ]
