@@ -136,8 +136,8 @@ module.exports = function(grunt) {
 
                 reporters: ["progress", "coverage"],
                 browsers: [
-                    "PhantomJS"
-                    // "Chrome"
+                    // "PhantomJS",
+                    "Chrome"
                 ],
 
                 // Change this to the framework you want to use.

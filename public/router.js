@@ -16,17 +16,17 @@ define(function(require) {
     // var FooCollection = require('modules/collections/foo');
     // var FooCollectionView = require('modules/views/fooCollection');
 
-    var GaModel = require('modules/models/ga');
-    var GaView = require('modules/views/ga');
+    var GaModel = require('GaModel');
+    var GaView = require('GaView');
 
-    var TwitterModel = require('modules/models/twitter');
-    var TwitterView = require('modules/views/twitter');
+    var TwitterModel = require('TwitterModel');
+    var TwitterView = require('TwitterView');
 
-    var InstagramModel = require('modules/models/instagram');
-    var InstagramView = require('modules/views/instagram');
+    var InstagramModel = require('InstagramModel');
+    var InstagramView = require('InstagramView');
 
-    var MailchimpModel = require('modules/models/mailchimp');
-    var MailchimpView = require('modules/views/mailchimp');
+    var MailchimpModel = require('MailchimpModel');
+    var MailchimpView = require('MailchimpView');
 
     // Defining the application router.
     var Router = Backbone.Router.extend({

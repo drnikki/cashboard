@@ -25,11 +25,12 @@ define(function(require) {
         },
         render: function() {
             var compiled = Handlebars.compile(this.template);
-            console.log( this.model.attributes );
+            // console.log( this.model.attributes );
             var html = compiled(this.model.attributes);
             this.$el.html(html);
             $('#ga').empty().html( this.el );
-            console.log('rendering');
+            // console.log('rendering');
+
             return this;
         }
     });
