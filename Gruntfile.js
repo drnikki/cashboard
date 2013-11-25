@@ -184,7 +184,7 @@ module.exports = function(grunt) {
 
             // This creates a server that will automatically run your tests when you
             // save a file and display results in the terminal.
-            daemon: {
+            d: {
                 options: {
                     singleRun: false
                 }
