@@ -1,19 +1,19 @@
 define(function(require) {
     "use strict";
 
-    describe("one tautology", function() {
+    xdescribe("one tautology", function() {
         it("is a tautology", function() {
             expect(true).toBeTruthy();
         });
 
-        describe("is awesome", function() {
+        xdescribe("is awesome", function() {
             it("is awesome", function() {
                 expect(1).toBe(1);
             });
         });
     });
 
-    describe("simple tests", function() {
+    xdescribe("simple tests", function() {
         it("increments", function() {
             var mike = 0;
 
@@ -29,7 +29,7 @@ define(function(require) {
         });
     });
 
-    describe("setUp/tearDown", function() {
+    xdescribe("setUp/tearDown", function() {
         beforeEach(function() {
             // console.log("Before");
         });
@@ -42,7 +42,7 @@ define(function(require) {
             // console.log("During");
         });
 
-        describe("setUp/tearDown", function() {
+        xdescribe("setUp/tearDown", function() {
             beforeEach(function() {
                 // console.log("Before2");
             });
@@ -57,7 +57,7 @@ define(function(require) {
         });
     });
 
-    describe("async", function() {
+    xdescribe("async", function() {
         it("multiple async", function() {
             var semaphore = 2;
 

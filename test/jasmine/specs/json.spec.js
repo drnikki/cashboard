@@ -1,32 +1,35 @@
+// ************************************************************************* //
+// ========================================================================= //
+//
+// JSON Endpoint testing
+//
+// Checks each data/[provider] urls for a success callback
+//
+// ========================================================================= //
+// ************************************************************************* //
+
+
+
 define(function(require) {
 
     var $ = require('jquery');
 
     describe("JSON endpoints: ", function() {
 
-        it("Google shouldn't 404", function() {
+        // stores a generic callback
+        var callbacks;
 
-            /*
+        function makeAjaxCall(url) {
             $.ajax({
-                url: 'localhost:3000/data/ga',
-                complete: function(xhr, textStatus) {
-                },
-                success: function(data, textStatus, xhr) {
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                }
+                url: url,
+                success: callbacks.success,
+                error : callbacks.error
             });
+        }
 
-            waitsFor
+        beforeEach(function() {
 
-            runs(function() {
-                expect(callback).toHaveBeenCalled();
-            });
-
-            */
-
-
-            var callbacks = {
+            callbacks = {
                 success : function(error) {
                     console.log('callback success');
                 },
@@ -35,17 +38,83 @@ define(function(require) {
                 }
             }
 
+        })
+
+        // ------------------------------------------------------------------------- //
+        // Google
+        // ------------------------------------------------------------------------- //
+
+        it("Google data should succeed", function() {
+
             spyOn(callbacks, 'success');
 
-            function makeAjaxCall() {
-                $.ajax({
-                    url: "http://localhost:3000/data/ga",
-                    success: callbacks.success,
-                    error : callbacks.error
-                });
-            }
+            makeAjaxCall('http://localhost:3000/data/ga');
 
-            makeAjaxCall();
+            waitsFor(function() {
+                return callbacks.success.callCount > 0;
+            }, "The Ajax call timed out.", 10000);
+
+            runs(function() {
+                expect(callbacks.success).toHaveBeenCalled();
+            });
+
+        });
+
+
+
+        // ------------------------------------------------------------------------- //
+        // Twitter
+        // ------------------------------------------------------------------------- //
+
+        it("Twitter data should succeed", function() {
+
+            spyOn(callbacks, 'success');
+
+            makeAjaxCall('http://localhost:3000/data/twitter');
+
+            waitsFor(function() {
+                return callbacks.success.callCount > 0;
+            }, "The Ajax call timed out.", 10000);
+
+            runs(function() {
+                expect(callbacks.success).toHaveBeenCalled();
+            });
+
+        });
+
+
+
+        // ------------------------------------------------------------------------- //
+        // Instram
+        // ------------------------------------------------------------------------- //
+
+        it("Instagram data should succeed", function() {
+
+            spyOn(callbacks, 'success');
+
+            makeAjaxCall('http://localhost:3000/data/instagram');
+
+            waitsFor(function() {
+                return callbacks.success.callCount > 0;
+            }, "The Ajax call timed out.", 10000);
+
+            runs(function() {
+                expect(callbacks.success).toHaveBeenCalled();
+            });
+
+        });
+
+
+
+        // ------------------------------------------------------------------------- //
+        // Mail Chimp
+        // ------------------------------------------------------------------------- //
+
+        it("Mail Chimp data should succeed", function() {
+
+            spyOn(callbacks, 'success');
+
+            makeAjaxCall('http://localhost:3000/data/mailchimp');
 
             waitsFor(function() {
                 return callbacks.success.callCount > 0;
