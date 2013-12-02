@@ -95,17 +95,62 @@ ga.login(function(err, token) {
         if (err) {console.log(err);}
 
         var data = entries[0];
-
-        console.log(data);
+        var metrics = data.metrics[0];
+        var dimensions = data.dimensions[0];
 
         db.google.save({
             // @TODO: should this timestamp yesterday or today? stats are from yesterday
             "timestamp" : now.format(),
-            "visitors" : data.metrics[0]['ga:visitors'],
-            "percentNewVisits" : data.metrics[0]['ga:percentNewVisits']
+            "visitors" : metrics['ga:visitors'],
+            "percentNewVisits" : metrics['ga:percentNewVisits']
         });
 
         console.log('***google data saved***');
 
     });
 });
+
+
+
+// ------------------------------------------------------------------------- //
+// Instagram
+// ------------------------------------------------------------------------- //
+
+var Instagram = require('instagram-node-lib');
+
+Instagram.set('client_id', config.instagram.client_id);
+Instagram.set('client_secret', config.instagram.client_secret);
+
+Instagram.users.info({
+    user_id: config.instagram.user_id,
+    complete : function(data) {
+
+        // get now for timestamp
+        var now = moment();
+
+        db.instagram.save({
+            "timestamp" : now.format(),
+            "followed_by" : data.counts.followed_by
+        });
+
+        console.log('***instagram data saved***');
+
+    }
+});
+
+
+
+
+// ------------------------------------------------------------------------- //
+// Mailchimp
+// ------------------------------------------------------------------------- //
+
+mcapi = require('mailchimp-api');
+mc = new mcapi.Mailchimp( config.mailchimp.key );
+
+// @TODO figure out what we need from mailchimp
+mc.lists.list({}, function(data) {
+    // data
+});
+
+

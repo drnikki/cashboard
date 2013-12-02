@@ -11,7 +11,9 @@
 var dbUrl = 'cashboard';
 var collections = [
     'twitter',
-    'google'
+    'google',
+    'instagram',
+    'mailchimp'
 ];
 
 var db = require('mongojs').connect(dbUrl, collections);
