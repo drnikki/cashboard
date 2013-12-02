@@ -202,11 +202,16 @@ module.exports = function(grunt) {
             server: {
                 file: 'app.js',
                 cmd: 'node'
-                // file: 'app.js',
-                //nodeArgs: ['--debug'],            // optional
-                //args: ['appArg1', 'appArg2']      // optional
-                // env: { NODE_ENV: 'development'}      // optional
+                // nodeArgs: ['--debug'],            // optional
+                // args: ['appArg1', 'appArg2']      // optional
+                // env: { NODE_ENV: 'development'}  // optional
             }
+            // @TODO add mongo starting
+            /*
+            mongo: {
+
+            }
+            */
         },
 
         coveralls: {
