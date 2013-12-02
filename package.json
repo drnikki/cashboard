@@ -38,6 +38,7 @@
     "instagram-node-lib": "~0.1.1",
     "mailchimp-api": "~2.0.4",
     "jasmine-node": "1.11.0",
-    "request": "2.27.0"
+    "request": "2.27.0",
+    "moment": "~2.4.0"
   }
 }

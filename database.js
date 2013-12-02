@@ -8,8 +8,11 @@
 // ========================================================================= //
 // ************************************************************************* //
 
-var dbUrl = "test";
-var collections = ["testcol"];
+var dbUrl = 'cashboard';
+var collections = [
+    'twitter',
+    'google'
+];
 
-var db = require("mongojs").connect(dbUrl, collections);
+var db = require('mongojs').connect(dbUrl, collections);
 module.exports = db;

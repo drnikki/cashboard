@@ -70,8 +70,8 @@ dataRoutes.ga = function(req, res){
 
         var options = {
             'ids': 'ga:77232304',
-            'start-date': '2013-10-11',
-            'end-date': '2013-11-30',
+            'start-date': '2013-10-03',
+            'end-date': '2013-10-03',
             //'dimensions': dimensions.join(','),
             'metrics': metrics.join(','),
             //'sort': '-ga:visitCount'
