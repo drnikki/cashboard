@@ -15,7 +15,8 @@
     "karma-qunit": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-coverage": "~0.1.0",
-    "grunt-bbb-requirejs": "backbone-boilerplate/grunt-bbb-requirejs#32e36a5acc817050b9b0bcf8e3e8f8d260f05b27"
+    "grunt-bbb-requirejs": "backbone-boilerplate/grunt-bbb-requirejs#32e36a5acc817050b9b0bcf8e3e8f8d260f05b27",
+    "grunt-develop": "~0.2.2"
   },
   "peerDependencies": {
     "generator-bbb": "*",

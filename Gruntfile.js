@@ -198,6 +198,17 @@ module.exports = function(grunt) {
             }
         },
 
+        develop: {
+            server: {
+                file: 'app.js',
+                cmd: 'node'
+                // file: 'app.js',
+                //nodeArgs: ['--debug'],            // optional
+                //args: ['appArg1', 'appArg2']      // optional
+                // env: { NODE_ENV: 'development'}      // optional
+            }
+        },
+
         coveralls: {
             options: {
                 coverage_dir: "test/coverage/PhantomJS 1.9.2 (Linux)/"
@@ -217,13 +228,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-karma-coveralls");
     grunt.loadNpmTasks("grunt-processhtml");
 
+    // so we can run the node.js app on test
+    grunt.loadNpmTasks('grunt-develop');
+
     // Grunt BBB tasks.
     grunt.loadNpmTasks("grunt-bbb-server");
     grunt.loadNpmTasks("grunt-bbb-requirejs");
     grunt.loadNpmTasks("grunt-bbb-styles");
 
     // Create an aliased test task.
-    grunt.registerTask("test", ["karma:run"]);
+    grunt.registerTask("test", [
+        'develop',
+        "karma:run"
+    ]);
 
     // When running the default Grunt command, just lint the code.
     grunt.registerTask("default", [

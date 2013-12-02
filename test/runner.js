@@ -40,7 +40,7 @@
 
             // mailchimp
             'MailchimpModel' : 'modules/models/mailchimp',
-            'MailchimpView' : 'modules/views/mailchimp',
+            'MailchimpView' : 'modules/views/mailchimp'
 
         },
 
