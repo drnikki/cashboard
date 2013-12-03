@@ -1,14 +1,44 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app.js"
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "bbb": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-processhtml": "~0.2.0",
+    "grunt-karma": "~0.6.2",
+    "grunt-karma-coveralls": "~2.0.2",
+    "karma-jasmine": "~0.1.0",
+    "karma-mocha": "~0.1.0",
+    "karma-qunit": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-coverage": "~0.1.0",
+    "grunt-bbb-requirejs": "backbone-boilerplate/grunt-bbb-requirejs#32e36a5acc817050b9b0bcf8e3e8f8d260f05b27",
+    "grunt-develop": "~0.2.2"
   },
+  "peerDependencies": {
+    "generator-bbb": "*",
+    "bower": "*",
+    "grunt-cli": "*",
+    "coveralls": "*"
+  },
+  "scripts": {
+    "test": "grunt test coveralls"
+  },
+  "name": "bbb-tester",
+  "version": "0.1.0",
   "dependencies": {
+    "mongojs": "~0.9.6",
     "express": "3.4.4",
     "hjs": "0.0.6",
-    "node-sass": "~0.7.0",
-    "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git"
+    "twitter": "~0.2.5",
+    "googleanalytics": "git+https://github.com/ncb000gt/node-googleanalytics.git",
+    "instagram-node-lib": "~0.1.1",
+    "mailchimp-api": "~2.0.4",
+    "jasmine-node": "1.11.0",
+    "request": "2.27.0",
+    "moment": "~2.4.0"
   }
 }
