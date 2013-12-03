@@ -4,6 +4,7 @@
 // JSON Data routes
 //
 // All JSON endpoints handled here
+// data/:providers
 //
 // ========================================================================= //
 // ************************************************************************* //
@@ -18,10 +19,13 @@ var dataRoutes = {};
 
 // ------------------------------------------------------------------------- //
 // Handle incoming routes
+//
+// is sent :provider parameter
 // ------------------------------------------------------------------------- //
 
 dataRoutes.dataRouter = function(req, res) {
 
+    // the provider parameter from data/:providers
     var provider = req.params.provider;
 
     // if we have a handler for that url
@@ -147,8 +151,8 @@ dataRoutes.twitter = function(req, res) {
 // Mailchimp
 // ------------------------------------------------------------------------- //
 
-mcapi = require('mailchimp-api');
-mc = new mcapi.Mailchimp( config.mailchimp.key );
+var mcapi = require('mailchimp-api');
+var mc = new mcapi.Mailchimp( config.mailchimp.key );
 
 dataRoutes.mailchimp = function(req, res) {
 
