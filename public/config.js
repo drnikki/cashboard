@@ -18,6 +18,7 @@ require.config({
         // Templates path
         'viewsPath' : 'modules/views',
 
+        // main app
         'app' : 'app.backbone',
 
         // modules

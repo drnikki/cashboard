@@ -20,13 +20,19 @@ define(function(require) {
         className : 'mailchimp-container',
         initialize: function(options) {
             // Re-render when the model changes
-            this.listenTo(this.model, "sync", this.render);
+            this.listenTo(this.model, 'sync', this.render);
         },
         render: function() {
-            var compiled = Handlebars.compile(this.template);
-            // console.log( this.model.attributes );
-            var html = compiled(this.model.attributes);
-            this.$el.html(html);
+            // compile the template into handlebars
+            var compiledTemplate = Handlebars.compile(this.template);
+
+            // combine the model data into the compiled template
+            var renderedTemplate = compiledTemplate(this.model.attributes);
+
+            // set the element's HTML to the rendered template
+            this.$el.html( renderedTemplate );
+
+            // empty out the page element, and set its HTML to the view's HTML
             $('#mailchimp').empty().html( this.el );
             // console.log('rendering');
             return this;
