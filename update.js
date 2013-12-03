@@ -61,19 +61,27 @@ twit.verifyCredentials(function(data) {
 // Google
 // ------------------------------------------------------------------------- //
 
+// get google module
 var GA = require('googleanalytics');
 
+// make a new google connection with this user/pass
 var ga = new GA.GA({
     'user' : config.google_analytics.user,
     'password' : config.google_analytics.password
 });
 
+// login
 ga.login(function(err, token) {
 
+    // metrics and dimensions reference
+    // https://developers.google.com/analytics/devguides/reporting/core/dimsmets
+
+    // metrics you want from google
     var metrics = [
         'ga:visitors',
         'ga:percentNewVisits'
     ];
+    // dimension you want from google
     var dimensions = [
     ];
 
@@ -93,6 +101,7 @@ ga.login(function(err, token) {
         //'sort': '-ga:visitCount'
     };
 
+    // get the data from google
     ga.get(options, function(err, entries) {
 
         if (err) {console.log(err);}

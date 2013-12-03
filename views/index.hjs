@@ -27,7 +27,7 @@
 
     <!-- build:[src] /source.min.js -->
 
-    <script data-main="/dist/main.build.js" src="/vendor/bower/requirejs/require.js"></script>
+    <script data-main="main.js" src="/vendor/bower/requirejs/require.js"></script>
     <!-- /build -->
 </body>
 

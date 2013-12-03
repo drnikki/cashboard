@@ -18,6 +18,8 @@ require.config({
         // Templates path
         'viewsPath' : 'modules/views',
 
+        'app' : 'app.backbone',
+
         // modules
         'events' : 'modules/events',
 
