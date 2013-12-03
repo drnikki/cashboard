@@ -1,3 +1,15 @@
+// ************************************************************************* //
+// ========================================================================= //
+//
+// Main node app file
+//
+// run 'node app.js' to start the app
+//
+// ========================================================================= //
+// ************************************************************************* //
+
+
+
 
 // ------------------------------------------------------------------------- //
 // Standard install
@@ -43,12 +55,12 @@ http.createServer(app).listen(app.get('port'), function(){
 // Cashboard stuff
 // ------------------------------------------------------------------------- //
 
+// get the data routes
 var dataRoutes = require('./routes/data');
 
+// handle requests
+
+// for root, use the index
 app.get('/', routes.index);
+// for data/:provider urls, use the dataRouter
 app.get( '/data/:provider', dataRoutes.dataRouter );
-
-// testing
-// all routes that are handled by backbone must be set to index
-app.get('/other', routes.index);
-

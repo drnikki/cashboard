@@ -3,7 +3,10 @@
 //
 // Update script
 //
-// Updates the mongo db with fresh content
+// Updates the mongo db with fresh content from each API
+//
+// run 'node update.js' to get updated data.
+// I suggest running it on a chron or regular daily interval
 //
 // ========================================================================= //
 // ************************************************************************* //

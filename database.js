@@ -8,7 +8,9 @@
 // ========================================================================= //
 // ************************************************************************* //
 
+// name of the mongo DB
 var dbUrl = 'cashboard';
+// names of the collections we want from that DB
 var collections = [
     'twitter',
     'google',
@@ -16,5 +18,7 @@ var collections = [
     'mailchimp'
 ];
 
+// connect to mongo
 var db = require('mongojs').connect(dbUrl, collections);
+
 module.exports = db;

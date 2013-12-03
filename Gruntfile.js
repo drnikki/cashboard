@@ -1,3 +1,21 @@
+// ************************************************************************* //
+// ========================================================================= //
+//
+// Gruntfile
+//
+// used in grunt automation
+// run 'npm install' to get all the dependencies set up.
+//
+// main tasks:
+//   jshint : jshint all js
+//   requirejs : r.js optimize the modules into a single file
+//   test : single run of all the tests
+//   karma:d : karma daemon, runs all tests on each file save
+//
+// ========================================================================= //
+// ************************************************************************* //
+
+
 module.exports = function(grunt) {
     "use strict";
 
@@ -6,7 +24,7 @@ module.exports = function(grunt) {
         clean: ["dist/", "test/reports"],
 
         // Run your source code through JSHint's defaults.
-        jshint: ["app/**/*.js"],
+        jshint: ["**/*.js"],
 
         // This task uses James Burke's excellent r.js AMD builder to take all
         // modules and concatenate them into a single file.
