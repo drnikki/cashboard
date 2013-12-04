@@ -11,7 +11,7 @@ define(function(require) {
     var Backbone = require('backbone');
 
     var MailchimpModel = Backbone.Model.extend({
-        url : 'http://localhost:3000/data/mailchimp',
+        url : '/data/mailchimp',
         initialize : function() {
             // autofetch?
             this.fetch();
