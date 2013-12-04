@@ -17,7 +17,8 @@
 <body>
 
     <main role="main" id="main">
-
+    <!-- these ids are used by the views' render functions to populate the divs
+         take a look at public/modules/views/instagram.js render to see it in action -->
         <section id="ga"></section>
         <section id="twitter"></section>
         <section id="mailchimp"></section>
