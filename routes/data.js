@@ -55,12 +55,12 @@ dataRoutes.dataRouter = function(req, res) {
     // the provider parameter from data/:providers
     var provider = req.params.provider;
 
-    // if we have a handler for that url
+    // if dataRoutes has a handler for that provider, use it
     if ( dataRoutes.hasOwnProperty(provider) ) {
 
         dataRoutes[provider](req,res);
 
-    // otherwise json error
+    // otherwise do a json error
     } else {
 
         res.json({
@@ -81,21 +81,29 @@ dataRoutes.dataRouter = function(req, res) {
 // Google
 // ------------------------------------------------------------------------- //
 
+// get google module
 var GA = require('googleanalytics');
 
 dataRoutes.ga = function(req, res){
 
+    // make a new google connection with this user/pass
     var ga = new GA.GA({
         'user' : config.google_analytics.user,
         'password' : config.google_analytics.password
     });
 
+    // login
     ga.login(function(err, token) {
 
+        // metrics and dimensions reference
+        // https://developers.google.com/analytics/devguides/reporting/core/dimsmets
+
+        // metrics you want from google
         var metrics = [
             'ga:visitors',
             'ga:percentNewVisits'
         ];
+        // dimension you want from google
         var dimensions = [
         ];
 
@@ -108,6 +116,7 @@ dataRoutes.ga = function(req, res){
             //'sort': '-ga:visitCount'
         };
 
+        // get these
         ga.get(options, function(err, entries) {
 
             // return JSON

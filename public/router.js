@@ -13,9 +13,7 @@ define(function(require) {
     var Backbone = require("backbone");
     var $ = require('jquery');
 
-    // var FooCollection = require('modules/collections/foo');
-    // var FooCollectionView = require('modules/views/fooCollection');
-
+    // Views and Models needed
     var GaModel = require('GaModel');
     var GaView = require('GaView');
 
@@ -31,7 +29,7 @@ define(function(require) {
     // Defining the application router.
     var Router = Backbone.Router.extend({
         routes: {
-            "": "index"
+            '': 'index'
         },
 
         index: function() {
