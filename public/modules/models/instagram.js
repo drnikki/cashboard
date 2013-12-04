@@ -11,6 +11,7 @@ define(function(require) {
     var Backbone = require('backbone');
 
     var InstagramModel = Backbone.Model.extend({
+        // these are the same URLs that are defined in /routes/data.js
         url : '/data/instagram',
         initialize : function() {
             // autofetch?
