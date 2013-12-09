@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         styles: {
             // Out the concatenated contents of the following styles into the below
             // development file path.
-            "dist/styles.css": {
+            "dist/styles/css/styles.css": {
                 // Point this to where your `index.css` file is location.
                 src: "public/styles/css/index.css",
 
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
         cssmin: {
             release: {
                 files: {
-                    "dist/styles.min.css": ["dist/styles.css"]
+                    "dist/styles/css/styles.min.css": ["dist/styles/css/styles.css"]
                 }
             }
         },
@@ -130,16 +130,6 @@ module.exports = function(grunt) {
                         dest: "dist/"
                     }
                 ]
-            }
-        },
-
-        compress: {
-            release: {
-                options: {
-                    archive: "dist/source.min.js.gz"
-                },
-
-                files: ["dist/source.min.js"]
             }
         },
 
@@ -216,8 +206,9 @@ module.exports = function(grunt) {
             }
         },
 
+        // develop lets us launch our node app for testing
         develop: {
-            server: {
+            nodeApp: {
                 file: 'app.js',
                 cmd: 'node'
                 // nodeArgs: ['--debug'],            // optional
@@ -244,7 +235,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
     grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-compress");
 
     // Third-party tasks.
     grunt.loadNpmTasks("grunt-karma");
