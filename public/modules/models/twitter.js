@@ -11,7 +11,8 @@ define(function(require) {
     var Backbone = require('backbone');
 
     var TwitterModel = Backbone.Model.extend({
-        url : 'http://localhost:3000/data/twitter',
+        // these are the same URLs that are defined in /routes/data.js
+        url : '/data/twitter',
         initialize : function() {
             // autofetch?
             this.fetch();
