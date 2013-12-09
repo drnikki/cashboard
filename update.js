@@ -20,6 +20,7 @@ var config = require('./config.js');
 
 // makes nice timestamps like this
 // 2013-12-02T13:29:03-06:00
+// may not be needed here anymore.
 var moment = require('moment');
 
 
@@ -45,7 +46,7 @@ var twit = new Twitter({
 twit.verifyCredentials(function(data) {
 
     db.twitter.save({
-        "timestamp" : moment().format(),
+        "timestamp" : new Date(),//moment().format(),
         "followers" : data.followers_count,
         "listed" : data.listed_count
     });
@@ -112,7 +113,7 @@ ga.login(function(err, token) {
 
         db.google.save({
             // @TODO: should this timestamp yesterday or today? stats are from yesterday
-            "timestamp" : now.format(),
+            "timestamp" : new Date(),
             "visitors" : metrics['ga:visitors'],
             "percentNewVisits" : metrics['ga:percentNewVisits']
         });
@@ -137,11 +138,8 @@ Instagram.users.info({
     user_id: config.instagram.user_id,
     complete : function(data) {
 
-        // get now for timestamp
-        var now = moment();
-
         db.instagram.save({
-            "timestamp" : now.format(),
+            "timestamp" : new Date(),
             "followed_by" : data.counts.followed_by
         });
 
@@ -157,8 +155,8 @@ Instagram.users.info({
 // Mailchimp
 // ------------------------------------------------------------------------- //
 
-mcapi = require('mailchimp-api');
-mc = new mcapi.Mailchimp( config.mailchimp.key );
+var mcapi = require('mailchimp-api');
+var mc = new mcapi.Mailchimp( config.mailchimp.key );
 
 // @TODO figure out what we need from mailchimp
 mc.lists.list({}, function(data) {
@@ -166,3 +164,6 @@ mc.lists.list({}, function(data) {
 });
 
 
+
+// @TODO figure out how to disconnect the DB after all the calls are complete.
+// Maybe promises, but not sure how that will work with all the 3rd party modules

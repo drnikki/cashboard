@@ -13,6 +13,8 @@
 var config = require('../config');
 // get the mongo db
 var db = require("../database.js");
+// dates and times
+var moment = require('moment');
 
 // holds all the routes
 var dataRoutes = {};
@@ -59,6 +61,14 @@ var GA = require('googleanalytics');
 
 dataRoutes.ga = function(req, res){
 
+    // moment;
+
+    var all = db.google.find(function(err, docs) {
+        res.json(docs);
+    });
+
+    /*
+
     // make a new google connection with this user/pass
     var ga = new GA.GA({
         'user' : config.google_analytics.user,
@@ -101,6 +111,8 @@ dataRoutes.ga = function(req, res){
             });
         });
     });
+
+    */
 
 };
 
