@@ -15,9 +15,22 @@ var config = require('../config');
 var db = require("../database.js");
 // dates and times
 var moment = require('moment');
+// underscore
+var _ = require('underscore');
 
 // holds all the routes
 var dataRoutes = {};
+
+// ------------------------------------------------------------------------- //
+// Helpers
+// ------------------------------------------------------------------------- //
+
+// averages an array by adding all the values and divide by length
+function arrAverage(arr) {
+    return _.reduce(arr, function(memo, num) {
+        return memo + num;
+    }, 0) / arr.length;
+}
 
 // ------------------------------------------------------------------------- //
 // Handle incoming routes
@@ -61,11 +74,55 @@ var GA = require('googleanalytics');
 
 dataRoutes.ga = function(req, res){
 
-    // moment;
+    var today = moment();
+    var lastweek = moment(today).subtract(7, 'day');
 
-    var all = db.google.find(function(err, docs) {
-        res.json(docs);
+    db.google.find({
+        timestamp : {
+            $gte : new Date( lastweek.format() ),
+            $lte : new Date( today.format() )
+        }
+    }, function(err, docs) {
+
+        var output;
+        var stats = {};
+
+        // for each doc
+        _.each( docs, function(doc) {
+            // save its values into the stats object
+            _.each( doc, function(value, key, list) {
+                // if its not a number, we don't want it
+                if ( !_.isNumber(value) ) {
+                    return;
+                }
+                // make an array if there isn't one
+                stats[key] = stats[key] || [];
+                // push in a new value
+                stats[key].push( value );
+                // console.log('val: ' + value, 'key: ' + key, 'list: ' + list);
+            });
+        });
+
+        var averages = {};
+        // average each stat array and save it to averages
+        _.each( stats, function(value, key) {
+            averages[key] = arrAverage( stats[key] );
+        });
+
+        // get the last value for comparison
+        // @TODO: should we get (today - 1) through (today - 8) for last week, and compare to today?
+        //        currently if today is big it influences the averages for the last week.
+        var last = _.last( docs );
+
+        output = {
+            // stats : stats,
+            averages : averages,
+            last : last
+        };
+
+        res.json(output);
     });
+
 
     /*
 
