@@ -103,6 +103,7 @@ dataRoutes.ga = function(req, res){
             });
         });
 
+        // save the averages
         var averages = {};
         // average each stat array and save it to averages
         _.each( stats, function(value, key) {
@@ -114,10 +115,20 @@ dataRoutes.ga = function(req, res){
         //        currently if today is big it influences the averages for the last week.
         var last = _.last( docs );
 
+        // changes
+        var changes = {};
+        // for each average
+        _.each( averages, function(value, key) {
+            // set the change to the last divided by average
+            // round to 4 decimals so you get 6.67% increase (1.0667)
+            changes[key] = ( last[key] / averages[key] ).toFixed(4);
+        });
+
         output = {
             // stats : stats,
             averages : averages,
-            last : last
+            last : last,
+            changes : changes
         };
 
         res.json(output);
