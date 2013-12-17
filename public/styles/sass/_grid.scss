@@ -1,6 +1,54 @@
 // ********************************************************************* //
 //
-// Grid
+// Grid Settings
+//
+// Using Yellowgrid by Matthew Lein
+//
+// https://github.com/matthewlein/yellowgrid
 //
 // ********************************************************************* //
 
+
+//-------------------------------------------------------
+// GRID SETTINGS
+//-------------------------------------------------------
+
+// this is the fixed gutter between columns
+$grid-gutter: 18px;
+
+// number of columns you want
+$grid-columns: 5;
+
+$grid-sets : true;
+
+// set "rows" to autoclear? (IE9+)
+$grid-sets-clearing : true;
+
+$grid-push : true;
+
+$grid-center : true;
+
+// these set your grid and column class names
+$grid-wrap-class: "grid";
+$grid-col-class: "grid__col";
+
+// Import the builder
+@import 'grid-builder';
+
+// --------------------------------------------------------------------- //
+// RESPONSIVE SETTINGS
+// --------------------------------------------------------------------- //
+
+// Breakpoint vars
+$bp-lap: 'only screen and (min-width: 500px)';
+$bp-desk: 'only screen and (min-width: 979px)';
+
+// Breakpoint for lap-based devices like tablets, ipads, laptops
+@media #{$bp-lap} {
+    @include grid-setup('lap');
+}
+
+// Breakpoint for desk-based devices like computers or TVs
+@media #{$bp-desk} {
+    @include grid-setup('desk');
+}
