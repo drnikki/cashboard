@@ -17,7 +17,7 @@
 $grid-gutter: 18px;
 
 // number of columns you want
-$grid-columns: 5;
+$grid-columns: 6;
 
 $grid-sets : true;
 
@@ -42,6 +42,10 @@ $grid-col-class: "grid__col";
 // Breakpoint vars
 $bp-lap: 'only screen and (min-width: 500px)';
 $bp-desk: 'only screen and (min-width: 979px)';
+
+// Mobile first! no breakpoint
+// Palm-based devices like a mobile phone
+@include grids-init('palm');
 
 // Breakpoint for lap-based devices like tablets, ipads, laptops
 @media #{$bp-lap} {
