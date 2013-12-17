@@ -1,4 +1,19 @@
+// ********************************************************************* //
+//
+// Imports Only
+//
+// ********************************************************************* //
 
-@import 'normalize';
+// normalize
+@import 'normalize.scss';
+
+// global styles
+@import 'global.scss';
+
+// grid layout
+@import 'grid.scss';
+
+// fonts
+@import 'fonts.scss';
 
 
